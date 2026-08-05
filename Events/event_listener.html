@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Listener</title>
+  </head>
+  <body>
+    <button id="btn">Click me!</button>
+    <p id="para"></p>
+
+    <script>
+      //we use event listner as we can work on the same button in multiple ways.
+      //like creating more than one functionality.
+
+      let btn = document.querySelector("#btn");
+      let p = document.querySelector("#para");
+      btn.addEventListener("click", () => {
+        console.log("You clicked the button.");
+      });
+
+      btn.addEventListener(
+        "dblclick",
+        () => {
+          p.innerHTML = "You clicked the button";
+        },
+        { once: true },
+      );
+    </script>
+  </body>
+</html>

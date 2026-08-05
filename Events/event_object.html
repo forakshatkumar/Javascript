@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Object</title>
+  </head>
+  <body>
+    <button id="btn">Click me!</button>
+
+    <script>
+      let btn = document.querySelector("#btn");
+      btn.onclick = (e) => {
+        btn.innerHTML = "Clicked!";
+        console.log(e.type);
+        console.log(e.target);
+        btn.onclick = null;
+      };
+
+      //the property of the object of event
+    </script>
+  </body>
+</html>
