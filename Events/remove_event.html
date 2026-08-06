@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remove Event</title>
+  </head>
+  <body>
+    <button id="btn">Click me!</button>
+
+    <script>
+      const btn = document.getElementById("btn");
+
+      const handler = () => {
+        btn.innerHTML = "Clicked";
+        console.log("Button was clicked Again");
+      };
+      btn.addEventListener("click", handler);
+
+      btn.addEventListener("click", () => {
+        btn.innerHTML = "Clicked";
+        console.log("Button was clicked");
+      });
+
+      btn.removeEventListener("click", handler);
+    </script>
+  </body>
+</html>
