@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toggle Button</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css"
+      integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #btn {
+        font-family:
+          "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: yellow;
+        border: 2px solid black;
+        border-radius: 4px;
+        transition: transform 0.5s ease;
+      }
+      #btn:hover {
+        transform: scale(1.1);
+        scale: 0.3x;
+        background-color: lightslategray;
+        color: white;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">
+      Change mode <i class="fa-regular fa-lightbulb"></i>
+    </button>
+
+    <script>
+      let btn = document.querySelector("#btn");
+      let currMode = "light";
+
+      let body = btn.addEventListener("click", () => {
+        if (currMode === "light") {
+          currMode = "dark";
+          document.querySelector("body").style.backgroundColor = "black";
+        } else {
+          currMode = "light";
+          document.querySelector("body").style.backgroundColor = "white";
+        }
+        console.log(currMode);
+      });
+    </script>
+  </body>
+</html>
