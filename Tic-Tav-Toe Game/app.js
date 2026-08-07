@@ -1,6 +1,8 @@
 let boxes = document.querySelectorAll(".box");
 let reset = document.querySelector("#Reset");
-let msg = document.querySelector("#msg");
+
+const winnerBox = document.getElementById("winnerBox");
+const winnerName = document.getElementById("winnerName");
 
 let turnO = true;
 
@@ -17,7 +19,7 @@ let winPatterns = [
 
 boxes.forEach((box) => {
   box.addEventListener("click", () => {
-    // Don't allow clicking an already filled box
+    // Prevent clicking an already filled box
     if (box.innerHTML !== "") return;
 
     if (turnO) {
@@ -34,28 +36,29 @@ boxes.forEach((box) => {
 
 reset.addEventListener("click", () => {
   turnO = true;
-  msg.innerHTML = "";
   enableBoxes();
+  winnerBox.classList.remove("show");
 });
 
-const showWinner = (winner) => {
-  msg.innerHTML = `Winner is ${winner}`;
-};
+function showWinner(winner) {
+  winnerName.innerText = winner;
+  winnerBox.classList.add("show");
+}
 
-const disableBoxes = () => {
+function disableBoxes() {
   boxes.forEach((box) => {
     box.disabled = true;
   });
-};
+}
 
-const enableBoxes = () => {
+function enableBoxes() {
   boxes.forEach((box) => {
     box.disabled = false;
     box.innerHTML = "";
   });
-};
+}
 
-const check = () => {
+function check() {
   for (let pattern of winPatterns) {
     let pos1 = boxes[pattern[0]].innerHTML;
     let pos2 = boxes[pattern[1]].innerHTML;
@@ -65,8 +68,22 @@ const check = () => {
       if (pos1 === pos2 && pos2 === pos3) {
         showWinner(pos1);
         disableBoxes();
+
         return;
       }
     }
   }
-};
+
+  let draw = true;
+
+  boxes.forEach((box) => {
+    if (box.innerHTML === "") {
+      draw = false;
+    }
+  });
+
+  if (draw) {
+    winnerName.innerText = "It's a Draw!";
+    winnerBox.classList.add("show");
+  }
+}
