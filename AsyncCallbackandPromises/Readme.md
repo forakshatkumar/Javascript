@@ -15,6 +15,7 @@
     let promise = new Promise((resolve,reject) =>{...})
 
     ``Promise State`` -> Pending, Fulfilled, Reject.
+    
     -`.then()` 
       promise.then((res)=>{...})
     - `.catch`
